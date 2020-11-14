@@ -1,7 +1,7 @@
 import { ResultRecord } from "./types";
 
 export const textFormatter = ({ ip, host, ports, pinged }: ResultRecord) => {
-  return `host:${host}\tip:${ip}\nscanned:${ports.join(
+  return `\n\nhost:${host}\tip:${ip}\nscanned:${ports.join(
     ",\t"
   )}\npinged:\n\t${Object.entries(pinged)
     .map(([port, ping]) => `${port}:${ping}`)

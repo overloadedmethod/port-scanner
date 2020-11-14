@@ -18,17 +18,25 @@ export async function* readFile(relPath: string) {
 }
 
 export async function serializeScanProb(
-  path: string,
+  relPath: string,
   records: AsyncGenerator<ResultRecord>,
   isJson = true,
   formatter = textFormatter
 ) {
+  const filePath = path.join(relPath);
   if (isJson) {
     const result: Record<string, ResultRecord> = {};
     for await (const line of records) result[line.host] = line;
+    fs.writeFileSync(filePath, JSON.stringify(result));
     console.log(result);
     return;
   }
 
-  for await (const line of records) console.log(formatter(line));
+  for await (const line of records)
+    await new Promise((res, rej) =>
+      fs.appendFile(filePath, formatter(line), (err) => {
+        if (err) rej(err);
+        else res();
+      })
+    );
 }

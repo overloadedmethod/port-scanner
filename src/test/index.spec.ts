@@ -2,7 +2,7 @@
 
 import utility from "../scanner";
 import { resolveIp, testPort } from "../scanner/network";
-import { readFile } from "../scanner/files";
+import { readFile, serializeScanProb } from "../scanner/files";
 
 jest.setTimeout(30000);
 
@@ -75,11 +75,11 @@ describe("file utilities", () => {
     expect(lines).toEqual(expected);
   });
 
-  it("should serialize provided data as json", async () => {
-    throw new Error("not implemented");
+  it("should serialize provided data as text", async () => {
+    await utility("./src/test/test.txt", "./src/test/scanResults.txt", false);
   });
 
-  it("should serialize provided data as text", async () => {
-    throw new Error("not implemented");
+  it("integrity test", async () => {
+    await utility("./src/test/test.txt", "./src/test/scanResults.json", true);
   });
 });
