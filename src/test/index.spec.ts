@@ -194,7 +194,7 @@ describe("IP resolving", () => {
 
 describe("Port scanning", () => {
   it("should return milliseconds number if port is open", async () => {
-    const result = await testPort("127.0.0.1:1337", 2000, (_) =>
+    const result = await testPort("127.0.0.1", 1337, 2000, (_) =>
       Promise.resolve(1440)
     );
     expect(result).toBe(1440);
@@ -202,7 +202,8 @@ describe("Port scanning", () => {
 
   it("should return -1 on timeout", async () => {
     const result = await testPort(
-      "127.0.0.1:1337",
+      "127.0.0.1",
+      1337,
       2000,
       async (_) => new Promise((r) => setTimeout(r, 4000))
     );
@@ -210,7 +211,7 @@ describe("Port scanning", () => {
   });
 
   it("should return -1 on error", async () => {
-    const result = await testPort("127.0.0.1:1337", 2000, async (_) =>
+    const result = await testPort("127.0.0.1", 1337, 2000, async (_) =>
       Promise.reject(new Error("wrong something"))
     );
     expect(result).toBe(-1);

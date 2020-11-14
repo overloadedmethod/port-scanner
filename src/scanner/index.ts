@@ -34,9 +34,7 @@ async function* scanPorts(
       continue;
     }
 
-    const pings = await Promise.all(
-      ports.map((port) => portTester(`${ip}:${port}`))
-    );
+    const pings = await Promise.all(ports.map((port) => portTester(ip, port)));
 
     const pinged: Record<number, number> = {};
     ports.forEach((port, index) => {
