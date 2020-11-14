@@ -74,12 +74,4 @@ describe("file utilities", () => {
     for await (const line of readFile("./src/test/test.txt")) lines.push(line);
     expect(lines).toEqual(expected);
   });
-
-  it("should serialize provided data as text", async () => {
-    await utility("./src/test/test.txt", "./src/test/scanResults.txt", false);
-  });
-
-  it("integrity test", async () => {
-    await utility("./src/test/test.txt", "./src/test/scanResults.json", true);
-  });
 });

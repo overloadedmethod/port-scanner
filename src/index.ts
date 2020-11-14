@@ -1,5 +1,4 @@
-const main = () => {
-  console.log("hello world");
-};
+import utility from "./scanner";
+const [_command, _file, inputPath, outputPath, isJSON, ..._rest] = process.argv;
 
-main();
+utility(inputPath, outputPath, !!isJSON);

@@ -1,0 +1,12 @@
+
+
+host:localhost	ip:127.0.0.1
+scanned:8080,	22
+pinged:
+	
+
+host:duckduckgo.com	ip:40.114.177.156
+scanned:80,	443,	9999
+pinged:
+	80:83
+	443:83
