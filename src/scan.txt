@@ -1,0 +1,5 @@
+localhost 8080
+duckduckgo.com 80
+duckduckgo.com 443
+localhost 22
+duckduckgo.com 9999

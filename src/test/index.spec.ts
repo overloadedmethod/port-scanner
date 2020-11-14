@@ -1,7 +1,7 @@
 // import * as faker from "faker";
 
-import utility from "./scanner";
-import { resolveIp, testPort } from "./scanner/network";
+import utility from "../scanner";
+import { resolveIp, testPort } from "../scanner/network";
 
 // type ResultRecord = {
 //   ip: string;
